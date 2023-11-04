@@ -1,35 +1,21 @@
+	
 
+	Tower Defense (top-down) Pack
 
-         License: 
+	by  Kenney Vleugels (Kenney.nl)
 
-         by Artyom Zagorskiy
+			------------------------------
 
-         -----------
+	License (Creative Commons Zero, CC0)
+	http://creativecommons.org/publicdomain/zero/1.0/
 
-         If you bought the assets, this license grants you 
-               
-         the right to use the game assets provided, consisting of 
-               
-         the images and sprite sheets, in any number of non-commercial
-                
-         and / or commercial projects, including software, websites, 
-                
-         games and print projects. No attribution is required. You are 
-                
-         allowed to modify the game assets. Do not distribute, re-package 
-               
-         or sell the modified and / or unmodified game assets on their own 
-                
-         or as part of a collection, except if they are content files of your 
-                           
-         non-commercial or commercial project. 
+	You may use these assets in personal and commercial projects.
+	Credit (Kenney or www.kenney.nl) would be nice but is not mandatory.
 
-         -----------
+			------------------------------
 
-         CC0 1.0 Universal
-         https://creativecommons.org/publicdomain/zero/1.0/
+	Donate:   http://support.kenney.nl
+	Request:  http://request.kenney.nl
 
-         -----------
-
-         Follow me on Twitter for news:
-	 @ArtyomZagorskiy
+	Follow on Twitter for updates:
+	@KenneyNL
