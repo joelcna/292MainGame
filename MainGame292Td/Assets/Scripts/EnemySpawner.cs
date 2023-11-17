@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -17,7 +16,6 @@ public class EnemySpawner : MonoBehaviour
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new UnityEvent();
 
-
     private int currentWave = 1;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
@@ -31,33 +29,44 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartWave();
+        StartCoroutine(SpawnWaves());
     }
-    // Start is called before the first frame update
-    
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (!isSpawning) return;
-        timeSinceLastSpawn += Time.deltaTime;
-
-        if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeft > 0)
-        {
-            SpawnEnemy();
-            enemiesLeft--;
-            enemiesAlive++;
-            timeSinceLastSpawn = 0f;
-        }
+        // Your Update logic
     }
 
     private void EnemyDestroyed()
     {
         enemiesAlive--;
     }
-    private void StartWave()
+
+    private IEnumerator SpawnWaves()
     {
-        enemiesLeft = enemiesPerWave();
+        while (true)  // Infinite loop for continuous wave spawning
+        {
+            yield return new WaitForSeconds(timeBetweenWaves);
+
+            enemiesLeft = enemiesPerWave();
+            isSpawning = true;
+
+            while (enemiesLeft > 0)
+            {
+                SpawnEnemy();
+                enemiesLeft--;
+                enemiesAlive++;
+                yield return new WaitForSeconds(1f / enemiesPerSecond);
+            }
+
+            while (enemiesAlive > 0)
+            {
+                yield return null; // Wait until all enemies are destroyed
+            }
+
+            isSpawning = false;
+            currentWave++;
+        }
     }
 
     private void SpawnEnemy()
@@ -71,6 +80,7 @@ public class EnemySpawner : MonoBehaviour
             enemyRigidbody.velocity = Vector2.zero;
         }
     }
+
     private int enemiesPerWave()
     {
         return Mathf.RoundToInt(baseEnemies * Mathf.Pow(currentWave, 0.75f));

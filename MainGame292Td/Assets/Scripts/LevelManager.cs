@@ -10,6 +10,8 @@ public class LevelManager : MonoBehaviour
 
     public Transform StartPoint;
 
+    public int credits; 
+
     private void Awake()
     {
         main = this;
@@ -17,12 +19,25 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        credits = 100;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void IncreaseCredits(int amount)
     {
-        
+        credits += amount;
+    }
+
+    public bool SpendCredits(int amount)
+    {
+        if (amount <= credits)
+        {
+            credits -= amount;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Not enough credits");
+            return false;
+        }
     }
 }
